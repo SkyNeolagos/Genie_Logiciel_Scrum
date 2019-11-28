@@ -1,7 +1,7 @@
 import os
 import re
 
-def getTitre(nomFichier):
+def getAuthor(nomFichier):
 	titreSeparer = nomFichier.split("_")
 	finTitreSeparer = titreSeparer[len(titreSeparer)-1].split(".")
 	finTitre = finTitreSeparer[0]
