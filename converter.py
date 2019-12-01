@@ -1,9 +1,19 @@
 import os ##Librairie operating systems
 import re
 
+def createFolder():
+    repertoire = 'convertDossier'
+    if(os.path.exists(repertoire)==False):
+        os.mkdir(repertoire)
+    else:
+        consoleCommand='rm -r '+repertoire
+        os.system(consoleCommand)
+        os.mkdir(repertoire)
+
 def convertToTxt():
     listFilesPdf=os.listdir('.')
     pathDirectory=os.path.dirname(os.path.abspath(__file__))
+    createFolder()
     for pos in listFilesPdf:
         if pos.endswith(".txt"):
             os.remove(os.path.join(pathDirectory,pos))
@@ -11,7 +21,7 @@ def convertToTxt():
             name=os.path.splitext(os.path.basename(pos))[0]
             replace=pos.replace(' ','_')
             os.rename(pos,replace)
-            consoleCommand='pdftotext '+replace+' '+name+'.txt'
+            consoleCommand='pdftotext '+replace+' '+'convertDossier/'+name+'.txt'
             os.system(consoleCommand)
 
 def convertTotxtWithName(fichier):
@@ -24,7 +34,3 @@ def convertTotxtWithName(fichier):
         os.rename(fichier,replace)
         consoleCommand='pdftotext '+replace+' '+name+'.txt'
         os.system(consoleCommand)
-
-if __name__ == '__main__':
-    convertToTxt()
-    convertTotxtWithName("Alexandrov_2015_A_Modified_Tripartite_Model_for_Document_Representation_in_Internet_Sociology.pdf")

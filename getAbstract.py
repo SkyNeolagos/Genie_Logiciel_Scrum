@@ -1,6 +1,4 @@
-
-
-def Abstract(mon_fichier):
+def getAbstract(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
 	contenu = mon_fichier.read()
 	mon_fichier.close()
@@ -22,7 +20,4 @@ def Abstract(mon_fichier):
 
 	contenu=contenu.strip()
 	contenu="Abstract:\n\t"+contenu
-	print(contenu)
-
-if __name__ == '__main__':
-	Abstract("text1.txt")
+	return contenu+"\n"
