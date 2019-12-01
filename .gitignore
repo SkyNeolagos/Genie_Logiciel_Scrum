@@ -12,4 +12,7 @@ finalDossier/Mikolov_2013_Distributed_representations_of_words_and_phrases_and_t
 finalDossier/Torres-Moreno_2012_Artex_is_another_text_summarizer
 finalDossier/Vanderwende_2007_Beyond_SumBasic
 Alexandrov_2015_A_Modified_Tripartite_Model_for_Document_Representation_in_Internet_Sociology
+__pycache__/getTitre.cpython-37.pyc
+__pycache__/getAbstract.cpython-37.pyc
+__pycache__/converter.cpython-37.pyc
 *.pyc
