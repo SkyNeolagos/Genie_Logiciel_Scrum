@@ -18,35 +18,40 @@ def createFolderFinal():
 
 def main():
 	parser = argparse.ArgumentParser()
-	parser.add_argument("-t", help="version texte")
-	parser.add_argument("-x", help="version XML")
+	parser.add_argument("--type", dest="version", choices=["t", "x"], help="Choix version")
 	args = parser.parser_args()
-	convertToTxt()
-    listFilesTxt=os.listdir("convertDossier")
-    ##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
-    createFolderFinal()
-    for pos in listFilesTxt:
-        if pos.endswith(".txt"):
-            chemin="convertDossier/"+pos
-            titre=getTitre(chemin)
-            abstract=getAbstract(chemin)
-            auteur=getAuthor(chemin)
-            #biblio=getBiblio(chemin)
-            nom=os.path.splitext(os.path.basename(pos))[0]
-            with open("finalDossier/"+nom, "a") as fichierFinal:
-                nom="\t<preamble>"+nom+"</preamble>\n"
-                titre="\t<titre>"+titre+"</titre>\n"
-                auteur="\t<auteur>"+auteur+"</auteur>\n"
-                abstract="\t<abstract>"+abstract+"</abstract>\n"
-                #biblio="\t<biblio>"+biblio+"</biblio>\n"
-                fichierFinal.write("<article>\n")
-                fichierFinal.write(nom)
-                fichierFinal.write(titre)
-                fichierFinal.write(auteur)
-                fichierFinal.write(abstract)
-                #fichierFinal.write(biblio)
-                fichierFinal.write("</article>\n")
-                fichierFinal.close
+	versionFormat = args.version
+	if versionFormat == "t":
+		print('format txt')
+	elif versionFormat == "x":
+		print('format xml') 
+	'''else:
+		convertToTxt()
+	    listFilesTxt=os.listdir("convertDossier")
+	    ##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
+	    createFolderFinal()
+	    for pos in listFilesTxt:
+	        if pos.endswith(".txt"):
+	            chemin="convertDossier/"+pos
+	            titre=getTitre(chemin)
+	            abstract=getAbstract(chemin)
+	            auteur=getAuthor(chemin)
+	            #biblio=getBiblio(chemin)
+	            nom=os.path.splitext(os.path.basename(pos))[0]
+	            with open("finalDossier/"+nom, "a") as fichierFinal:
+	                nom="\t<preamble>"+nom+"</preamble>\n"
+	                titre="\t<titre>"+titre+"</titre>\n"
+	                auteur="\t<auteur>"+auteur+"</auteur>\n"
+	                abstract="\t<abstract>"+abstract+"</abstract>\n"
+	                #biblio="\t<biblio>"+biblio+"</biblio>\n"
+	                fichierFinal.write("<article>\n")
+	                fichierFinal.write(nom)
+	                fichierFinal.write(titre)
+	                fichierFinal.write(auteur)
+	                fichierFinal.write(abstract)
+	                #fichierFinal.write(biblio)
+	                fichierFinal.write("</article>\n")
+	                fichierFinal.close'''
 
 
 
