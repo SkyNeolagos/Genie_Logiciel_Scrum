@@ -26,5 +26,4 @@ def getAbstract(mon_fichier):
 		contenu=contenu[:len(contenu)-2]
 
 	contenu=contenu.strip()
-	contenu="Abstract:\n\t"+contenu
-	return contenu+"\n"
+	return contenu

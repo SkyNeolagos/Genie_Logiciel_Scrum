@@ -24,5 +24,4 @@ def getBiblio(mon_fichier):
 			tmp1,tmp2=contenu.split("",1)
 			contenu=tmp1.strip()+"\n"+tmp2.strip()
 	contenu=contenu.strip()
-	contenu="References:\n\t"+contenu
 	return contenu
