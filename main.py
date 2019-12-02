@@ -3,7 +3,9 @@ from getAbstract import *
 from getTitre import *
 from getAuthor import *
 from getBiblio import *
+import argparse
 import os
+
 
 def createFolderFinal():
     repertoire = 'finalDossier'
@@ -15,7 +17,11 @@ def createFolderFinal():
         os.mkdir(repertoire)
 
 def main():
-    convertToTxt()
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-t", help="version texte")
+	parser.add_argument("-x", help="version XML")
+	args = parser.parser_args()
+	convertToTxt()
     listFilesTxt=os.listdir("convertDossier")
     ##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
     createFolderFinal()
