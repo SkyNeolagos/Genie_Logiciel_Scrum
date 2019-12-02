@@ -19,8 +19,9 @@ def getTitre(nomFichier):
 		elif debTitre.lower() in lignes[i].lower():
 			titreFinal = lignes[i].rstrip()
 			y = i+1
-			while finTitre.lower() in lignes[y].lower():
+			while finTitre.lower() not in lignes[y].lower():
 				titreFinal = titreFinal +" "+ lignes[y].rstrip()
 				y = y + 1
+			titreFinal = titreFinal +" "+ lignes[y].rstrip()
 			break
-	return "Titre: \n\t"+titreFinal+"\n"
+	return titreFinal

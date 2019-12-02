@@ -24,4 +24,4 @@ def getAbstract(mon_fichier):
 
 	contenu=contenu.strip()
 	contenu="Abstract:\n\t"+contenu
-	return contenu+"\n"
+	return contenu
