@@ -2,6 +2,7 @@ from converter import *
 from getAbstract import *
 from getTitre import *
 from getAuthor import *
+from getBiblio import *
 import os
 
 def createFolderFinal():
@@ -24,13 +25,22 @@ def main():
             titre=getTitre(chemin)
             abstract=getAbstract(chemin)
             auteur=getAuthor(chemin)
+            #biblio=getBiblio(chemin)
             nom=os.path.splitext(os.path.basename(pos))[0]
-
             with open("finalDossier/"+nom, "a") as fichierFinal:
-         		fichierFinal.write(titre)
-         		fichierFinal.write(abstract)
-         		fichierFinal.write(auteur)
-         		fichierFinal.close
+                nom="\t<preamble>"+nom+"</preamble>\n"
+                titre="\t<titre>"+titre+"</titre>\n"
+                auteur="\t<auteur>"+auteur+"</auteur>\n"
+                abstract="\t<abstract>"+abstract+"</abstract>\n"
+                #biblio="\t<biblio>"+biblio+"</biblio>\n"
+                fichierFinal.write("<article>\n")
+                fichierFinal.write(nom)
+                fichierFinal.write(titre)
+                fichierFinal.write(auteur)
+                fichierFinal.write(abstract)
+                #fichierFinal.write(biblio)
+                fichierFinal.write("</article>\n")
+                fichierFinal.close
 
 
 

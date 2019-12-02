@@ -1,10 +1,7 @@
-
-
 def getBiblio(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
 	textComplet = mon_fichier.read()
 	mon_fichier.close()
-
 
 	try:
 		tmp,contenu=textComplet.rsplit("REFERENCES\n",1)
@@ -23,4 +20,4 @@ def getBiblio(mon_fichier):
 			contenu=tmp1.strip()+"\n"+tmp2
 	contenu=contenu.strip()
 	contenu="References:\n\t"+contenu
-	print(contenu)
+	return contenu
