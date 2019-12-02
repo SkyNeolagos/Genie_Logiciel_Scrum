@@ -1,3 +1,9 @@
+def isNum(string):
+	for char in string:
+		if char!="0" and char!="1" and char!="2" and char!="3" and char!="4" and char!="5" and char!="6" and char!="7" and char!="8" and char!="9" :
+			return False
+	return True
+
 def getBiblio(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
 	textComplet = mon_fichier.read()
@@ -15,7 +21,7 @@ def getBiblio(mon_fichier):
 	if ff>0:
 		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
 
-		if unicode(tmp3).isnumeric() or (tmp3!="" and textComplet.count(tmp3)>1):
+		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>1):
 			tmp1,tmp2=contenu.split("",1)
 			tmp2=tmp2[tmp2.find('\n'):].strip()
 			tmp2=tmp2[tmp2.find('\n'):].strip()
@@ -24,4 +30,5 @@ def getBiblio(mon_fichier):
 			tmp1,tmp2=contenu.split("",1)
 			contenu=tmp1.strip()+"\n"+tmp2.strip()
 	contenu=contenu.strip()
+	contenu="References:\n\t"+contenu
 	return contenu
