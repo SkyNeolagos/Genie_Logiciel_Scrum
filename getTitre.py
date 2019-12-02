@@ -2,13 +2,25 @@ import os
 import re
 
 def getTitre(nomFichier):
-	with open(nomFichier, "r") as fichierOrigin:
-		titre = fichierOrigin.readline()
-		fichierOrigin.close
-	with open("final"+nomFichier, "a") as fichierDestination:
-		fichierDestination.write("Titre:\n")
-		fichierDestination.write("\t"+titre)
-		fichierDestination.close
+	titreSeparer = nomFichier.split("_")
+	debTitre = titreSeparer[2]
+	finTitreSeparer = titreSeparer[len(titreSeparer)-1].split(".")
+	finTitre = finTitreSeparer[0]
 
-if __name__ == '__main__':
-	getTitre("data.txt")
+
+	fichier = open(nomFichier, "r")
+	lignes = fichier.readlines()
+	fichier.close()
+	titreFinal=""
+	for i in range(0,len(lignes)):
+		if debTitre in lignes[i] and finTitre in lignes[i]:
+			titreFinal = lignes[i]
+			break
+		elif debTitre.lower() in lignes[i].lower():
+			titreFinal = lignes[i].rstrip()
+			y = i+1
+			while finTitre.lower() in lignes[y].lower():
+				titreFinal = titreFinal +" "+ lignes[y].rstrip()
+				y = y + 1
+			break
+	return "Titre: \n\t"+titreFinal+"\n"
