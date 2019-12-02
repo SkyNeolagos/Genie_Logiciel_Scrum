@@ -1,18 +1,21 @@
 def getAbstract(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
-	contenu = mon_fichier.read()
+	textComplet = mon_fichier.read()
 	mon_fichier.close()
 
+	contenu=""
+	if "ABSTRACT" in textComplet :
+		tmp,contenu=textComplet.split("ABSTRACT",1)
+	elif "Abstract" in textComplet :
+		tmp,contenu=textComplet.split("Abstract",1)
 
-	if "ABSTRACT" in contenu :
-		tmp,contenu=contenu.split("ABSTRACT",1)
-	elif "Abstract" in contenu :
-		tmp,contenu=contenu.split("Abstract",1)
+	if "INTRODUCTION" in textComplet:
+		contenu,tmp=textComplet.split("INTRODUCTION",1)
+	elif "Introduction" in textComplet :
+		contenu,tmp=textComplet.split("Introduction",1)
 
-	if "INTRODUCTION" in contenu:
-		contenu,tmp=contenu.split("INTRODUCTION",1)
-	elif "Introduction" in contenu :
-		contenu,tmp=contenu.split("Introduction",1)
+	if contenu=="":
+		return "Abstract introuvable"
 
 	contenu=contenu.rsplit('1',1)[0]
 
@@ -24,4 +27,4 @@ def getAbstract(mon_fichier):
 
 	contenu=contenu.strip()
 	contenu="Abstract:\n\t"+contenu
-	return contenu
+	return contenu+"\n"
