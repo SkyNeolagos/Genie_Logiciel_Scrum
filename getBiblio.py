@@ -3,9 +3,9 @@ def getBiblio(mon_fichier):
 	textComplet = mon_fichier.read()
 	mon_fichier.close()
 
-	try:
+	if "REFERENCES" in contenu :
 		tmp,contenu=textComplet.rsplit("REFERENCES\n",1)
-	except ValueError:
+	elif "References" in contenu :
 		tmp,contenu=textComplet.rsplit("References\n",1)
 
 	ff=contenu.find('')
