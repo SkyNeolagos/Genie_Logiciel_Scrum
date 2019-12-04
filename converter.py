@@ -11,7 +11,7 @@ def createFolder():
         os.mkdir(repertoire)
 
 def convertToTxt():
-    listFilesPdf=os.listdir('.')
+    listFilesPdf=os.listdir(".")
     pathDirectory=os.path.dirname(os.path.abspath(__file__))
     createFolder()
     for pos in listFilesPdf:

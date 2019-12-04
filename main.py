@@ -4,6 +4,7 @@ from getTitre import *
 from getAuthor import *
 from getBiblio import *
 from writeConvert import *
+from getArgument import *
 
 import os
 
@@ -29,8 +30,7 @@ def main():
             auteur=getAuthor(chemin)
             biblio=getBiblio(chemin)
             nom=os.path.splitext(os.path.basename(pos))[0]
-
-            writeConvert("text",nom,titre,auteur,abstract,biblio)
+            writeConvert(getArgument(),nom,titre,auteur,abstract,biblio)
 
 
 
