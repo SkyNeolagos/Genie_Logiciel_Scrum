@@ -10,6 +10,3 @@ def getArgument():
             break
 
     return type
-
-#if __name__ == '__main__':
-#    print(getArgument())
