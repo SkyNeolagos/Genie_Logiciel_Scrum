@@ -9,10 +9,10 @@ def getAbstract(mon_fichier):
 	elif "Abstract" in textComplet :
 		tmp,contenu=textComplet.split("Abstract",1)
 
-	if "INTRODUCTION" in textComplet:
-		contenu,tmp=textComplet.split("INTRODUCTION",1)
-	elif "Introduction" in textComplet :
-		contenu,tmp=textComplet.split("Introduction",1)
+	if "INTRODUCTION" in contenu:
+		contenu,tmp=contenu.split("INTRODUCTION",1)
+	elif "Introduction" in contenu :
+		contenu,tmp=contenu.split("Introduction",1)
 
 	if contenu=="":
 		return "Abstract introuvable"
