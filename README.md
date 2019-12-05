@@ -27,7 +27,8 @@ Par défaut les fichier en  sortie sont au format txt
 ```
 -python main.py -x
 ```
-*Option pour avoir des fichier xml en sortie
+
+* Option pour avoir des fichier xml en sortie
 ```
 -python main.py -t
 ```
