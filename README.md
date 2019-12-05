@@ -18,7 +18,8 @@ Ouvrir une console commande a ce meme endroit puis lancer le programme
 avec la commande suivante:
         ```
         -python main.py
-        ```
+        ```  
+  
 Cette commande lance le programme est stocke les fichiers resultats dans un dossier nommé
 finalDossier
 Par défaut les fichier en  sortie sont au format txt
