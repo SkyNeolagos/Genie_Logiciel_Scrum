@@ -1,6 +1,11 @@
 from converter import *
 from getAbstract import *
 from getTitre import *
+from getAuthor import *
+from getBiblio import *
+from writeConvert import *
+from getArgument import *
+
 import os
 
 def createFolderFinal():
@@ -22,12 +27,10 @@ def main():
             chemin="convertDossier/"+pos
             titre=getTitre(chemin)
             abstract=getAbstract(chemin)
+            auteur=getAuthor(chemin)
+            biblio=getBiblio(chemin)
             nom=os.path.splitext(os.path.basename(pos))[0]
-
-            with open("finalDossier/"+nom, "a") as fichierFinal:
-         		fichierFinal.write(titre)
-         		fichierFinal.write(abstract)
-         		fichierFinal.close
+            writeConvert(getArgument(),nom,titre,auteur,abstract,biblio)
 
 
 
