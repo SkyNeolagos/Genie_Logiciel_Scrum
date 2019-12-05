@@ -11,7 +11,7 @@ def createFolder():
         os.mkdir(repertoire)
 
 def convertToTxt():
-    listFilesPdf=os.listdir('.')
+    listFilesPdf=os.listdir("Papers")
     pathDirectory=os.path.dirname(os.path.abspath(__file__))
     createFolder()
     for pos in listFilesPdf:
@@ -19,6 +19,7 @@ def convertToTxt():
             os.remove(os.path.join(pathDirectory,pos))
         if pos.endswith(".pdf"):
             name=os.path.splitext(os.path.basename(pos))[0]
+            pos="Papers/"+pos
             replace=pos.replace(' ','_')
             os.rename(pos,replace)
             consoleCommand='pdftotext '+replace+' '+'convertDossier/'+name+'.txt'
