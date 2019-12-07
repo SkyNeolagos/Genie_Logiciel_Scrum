@@ -5,6 +5,7 @@ from getAuthor import *
 from getBiblio import *
 from writeConvert import *
 from getArgument import *
+from menu import *
 
 import os
 
@@ -22,9 +23,9 @@ def rmFolderConvert():
 	if(os.path.exists(repertoire)==True):
 		consoleCommand='rm -r '+repertoire
 		os.system(consoleCommand)
-        
-def main():
-	if convertToTxt() == "resume":
+
+def setup():
+    if convertToTxt() == "resume":
 		listFilesTxt=os.listdir("convertDossier")
 		##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
 		createFolderFinal()
@@ -37,7 +38,13 @@ def main():
 				biblio=getBiblio(chemin)
 				nom=os.path.splitext(os.path.basename(pos))[0]
 				writeConvert(getArgument(),nom,titre,auteur,abstract,biblio)
-		rmFolderConvert()			
+		rmFolderConvert()
+
+
+
+def main():
+    menuPrincipal()
+
 
 if __name__ == '__main__':
     main()
