@@ -1,46 +1,40 @@
-from converter import *
-from getAbstract import *
-from getTitre import *
-from getAuthor import *
-from getBiblio import *
-from writeConvert import *
-from getArgument import *
-from menu import *
-
+# -*- coding: utf-8 -*-
 import os
+from menu import *
+def affichageListPdf(listFilesPdf):
+    os.system('clear')
+    longueur = len(listFilesPdf)
+    for i in range(0,longueur):
+        print i,":",listFilesPdf[i]
 
-def createFolderFinal():
-    repertoire = 'finalDossier'
-    if(os.path.exists(repertoire)==False):
-        os.mkdir(repertoire)
-    else:
-        consoleCommand='rm -r '+repertoire
-        os.system(consoleCommand)
-        os.mkdir(repertoire)
-
-def rmFolderConvert():
-	repertoire = 'convertDossier'
-	if(os.path.exists(repertoire)==True):
-		consoleCommand='rm -r '+repertoire
-		os.system(consoleCommand)
-
-def setup():
-    if convertToTxt() == "resume":
-		listFilesTxt=os.listdir("convertDossier")
-		##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
-		createFolderFinal()
-		for pos in listFilesTxt:
-			if pos.endswith(".txt"):
-				chemin="convertDossier/"+pos
-				titre=getTitre(chemin)
-				abstract=getAbstract(chemin)
-				auteur=getAuthor(chemin)
-				biblio=getBiblio(chemin)
-				nom=os.path.splitext(os.path.basename(pos))[0]
-				writeConvert(getArgument(),nom,titre,auteur,abstract,biblio)
-		rmFolderConvert()
+def menuListPdf():
+    os.system('clear')
+    listFiles = os.listdir("Papers")
+    listFilesPdf=[]
+    for position in listFiles:
+        if position.endswith(".pdf"):
+            listFilesPdf.append(position)
+    loop = True
+    while loop:
+        affichageListPdf(listFilesPdf)
+        choice = input("Entrez le numéro du PDF que vous souhaitez convertir: ")
+        print(listFilesPdf[choice])
+        loop=False
 
 
+def menuPrincipal():
+    os.system('clear')
+    while True:
+        print("Bonjour\n")
+        choice=input("Que voulez-vous faire ?\n Entrez le numero correspondant a votre choix:\n\t1:Convertir tous les pdf present dans Papers\n\t2:Convertir certains des pdf present dans Papers\n\t3:Quitter\n")
+        if(choice==1):
+            setup()
+            break
+        elif(choice==2):
+            menuListPdf()
+            break
+        else:
+            break
 
 def main():
     menuPrincipal()
