@@ -3,6 +3,9 @@ from getAbstract import *
 from getTitre import *
 from getAuthor import *
 from getBiblio import *
+from getConclusion import *
+from getIntroduction import *
+from getDiscussion import *
 from writeConvert import *
 from getArgument import *
 import os
@@ -31,15 +34,14 @@ def setup():
 		    if pos.endswith(".txt"):
 			    chemin="convertDossier/"+pos
 			    titre=getTitre(chemin)
+                auteur=getAuthor(chemin)
 			    abstract=getAbstract(chemin)
-			    auteur=getAuthor(chemin)
+			    introduction=getIntro(chemin)
+                corps="Le corps du texte"#getCorps(chemin)
+                conclusion=getConclusion(chemin)
+                discussion=getDiscussion(chemin)
 			    biblio=getBiblio(chemin)
-			    
+
 			    nom=os.path.splitext(os.path.basename(pos))[0]
-			    writeConvert(getArgument(),nom,titre,auteur,abstract,biblio)
+			    writeConvert(getArgument(),nom,titre,auteur,abstract,introduction,corps,conclusion,discussion,biblio)
 	    rmFolderConvert()
-	    
-
-
-
-
