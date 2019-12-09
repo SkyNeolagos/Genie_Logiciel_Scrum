@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from menu import *
+from setup import *
 def affichageListPdf(listFilesPdf):
     os.system('clear')
     longueur = len(listFilesPdf)
