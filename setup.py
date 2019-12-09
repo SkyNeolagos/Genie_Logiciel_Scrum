@@ -31,17 +31,16 @@ def setup():
 	    ##pathDirectory=os.path.dirname(os.path.abspath(__file__))+"/convertDossier"
 	    createFolderFinal()
 	    for pos in listFilesTxt:
-		    if pos.endswith(".txt"):
-			    chemin="convertDossier/"+pos
-			    titre=getTitre(chemin)
+		if pos.endswith(".txt"):
+		chemin="convertDossier/"+pos
+		titre=getTitre(chemin)
                 auteur=getAuthor(chemin)
-			    abstract=getAbstract(chemin)
-			    introduction=getIntro(chemin)
-                corps="Le corps du texte"#getCorps(chemin)
+		abstract=getAbstract(chemin)
+		introduction=getIntro(chemin)
+                corps=#getCorps(chemin)
                 conclusion=getConclusion(chemin)
                 discussion=getDiscussion(chemin)
-			    biblio=getBiblio(chemin)
-
-			    nom=os.path.splitext(os.path.basename(pos))[0]
-			    writeConvert(getArgument(),nom,titre,auteur,abstract,introduction,corps,conclusion,discussion,biblio)
+		biblio=getBiblio(chemin)
+		nom=os.path.splitext(os.path.basename(pos))[0]
+		writeConvert(getArgument(),nom,titre,auteur,abstract,introduction,corps,conclusion,discussion,biblio)
 	    rmFolderConvert()
