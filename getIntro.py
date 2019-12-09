@@ -46,9 +46,6 @@ def getIntro(mon_fichier):
 				tmpTest+=test+2			
 	else:
 		contenu,tmp=contenu.split("\n2\n",1)
-		print "Alexandrov"
-		#Alexandrov
-
 
 	ff=contenu.find("")
 	if ff>0:
