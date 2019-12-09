@@ -22,7 +22,7 @@ def writeConvert(type, nom, titre, auteurs, abstract,introduction,corps,conclusi
         titre = "Titre :\n\t" + titre + "\n\n"
         auteurs = "Auteur :\n\t" + auteurs + "\n\n"
         abstract = "Abstract :\n\t" + abstract + "\n\n"
-        introduction = "introduction :\n\t" + introduction + "\n\n"
+        introduction = "Introduction :\n\t" + introduction + "\n\n"
         corps = "Corps :\n\t" + corps + "\n\n"
         conclusion = "Conclusion :\n\t" + conclusion + "\n\n"
         discussion = "Discussion :\n\t" + discussion + "\n\n"
