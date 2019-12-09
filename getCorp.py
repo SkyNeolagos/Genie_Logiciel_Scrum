@@ -3,7 +3,7 @@ def getCorp(mon_fichier):
 	contenu = mon_fichier.read()
 	mon_fichier.close()
 
-	contenueIntro = getIntro(nom_fichier)
+	contenueIntro = getIntro(mon_fichier)
 	contenueIntro = contenueIntro[len(contenueIntro)-10:]
 
 	if contenueIntro in contenu :

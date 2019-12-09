@@ -16,3 +16,4 @@ __pycache__/getTitre.cpython-37.pyc
 __pycache__/getAbstract.cpython-37.pyc
 __pycache__/converter.cpython-37.pyc
 *.pyc
+getIntroduction.py
