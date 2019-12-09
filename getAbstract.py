@@ -45,4 +45,5 @@ def getAbstract(mon_fichier):
 			contenu=tmp1.strip()+"\n"+tmp2.strip()
 
 	contenu=contenu.strip()
+	contenu=contenu.replace("\n"," ")
 	return contenu
