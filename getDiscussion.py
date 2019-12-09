@@ -8,7 +8,8 @@ def getDiscussion(mon_fichier):
 		tmp,contenu=contenu.split("DISCUSSION",1)
 	elif "Discussion" in contenu :
 		tmp,contenu=contenu.split("Discussion",1)
-
+	else:
+		return "Aucune Discussion presente dans le Pdf d'origine."
 	if "Conclusions" in contenu:
 		contenu,tmp=contenu.split("Conclusions",1)
 	elif "Conclusion" in contenu :
