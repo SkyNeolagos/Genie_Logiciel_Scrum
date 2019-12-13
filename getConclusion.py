@@ -4,33 +4,34 @@ def isNum(string):
 			return False
 	return True
 
-def getAbstract(mon_fichier):
+
+def getConclusion(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
 	textComplet = mon_fichier.read()
 	mon_fichier.close()
-
+	
 	contenu=""
-	if "ABSTRACT" in textComplet :
-		tmp,contenu=textComplet.split("ABSTRACT",1)
-	elif "Abstract" in textComplet :
-		tmp,contenu=textComplet.split("Abstract",1)
+	if "CONCLUSION" in textComplet :
+		tmp,contenu=textComplet.rsplit("CONCLUSION",1)
+	elif "Conclusion" in textComplet :
+		tmp,contenu=textComplet.rsplit("Conclusion",1)
 
-	if "INTRODUCTION" in contenu:
-		contenu,tmp=contenu.split("INTRODUCTION",1)
-	elif "Introduction" in contenu :
-		contenu,tmp=contenu.split("Introduction",1)
+	if "REFERENCES" in contenu:
+		contenu,tmp=contenu.rsplit("REFERENCES",1)
+	elif "References" in contenu :
+		contenu,tmp=contenu.rsplit("References",1)
+
+	if "ACKNOWLEDGMENTS" in contenu:
+		contenu,tmp=contenu.rsplit("ACKNOWLEDGEMENTS",1)
+	elif "Acknowledgements" in contenu :
+		contenu,tmp=contenu.rsplit("Acknowledgements",1)
 
 	if contenu=="":
-		return "Abstract introuvable"
+		return "Conclusion introuvable"
 
-	contenu=contenu.rsplit('1',1)[0]
-
-	while contenu[0].isalpha()==False:
+	while contenu[0]!="\n":
 		contenu=contenu[1:]
 
-	while contenu[len(contenu)-1]!="\n":
-		contenu=contenu[:len(contenu)-2]
-	
 	ff=contenu.find("")
 	if ff>0:
 		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
@@ -45,5 +46,4 @@ def getAbstract(mon_fichier):
 			contenu=tmp1.strip()+"\n"+tmp2.strip()
 
 	contenu=contenu.strip()
-	contenu=contenu.replace("\n"," ")
 	return contenu

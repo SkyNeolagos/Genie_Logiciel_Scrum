@@ -16,12 +16,12 @@ def getBiblio(mon_fichier):
 
 	if contenu=="":
 		return "References introuvables"
+	
 	ff=contenu.find("")
-
 	if ff>0:
 		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
 
-		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>1):
+		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
 			tmp1,tmp2=contenu.split("",1)
 			tmp2=tmp2[tmp2.find('\n'):].strip()
 			tmp2=tmp2[tmp2.find('\n'):].strip()
@@ -29,6 +29,6 @@ def getBiblio(mon_fichier):
 		else:
 			tmp1,tmp2=contenu.split("",1)
 			contenu=tmp1.strip()+"\n"+tmp2.strip()
+
 	contenu=contenu.strip()
-	contenu="References:\n\t"+contenu
 	return contenu
