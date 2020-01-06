@@ -15,7 +15,7 @@ def getAuthor(nomFichier):
 		if finTitre.lower() in lignes[i].lower():
 			y = i+1
 			auteurLigne = ""
-			while "abstract" not in lignes[y].lower() or "this article" not in lignes[y].lower():
+			while "abstract" not in lignes[y].lower():
 				auteurLigne = auteurLigne +" "+ lignes[y].strip()
 				if y+1<len(lignes):
 					y=y+1
