@@ -9,7 +9,6 @@ def getAuthor(nomFichier):
 	fichier = open(nomFichier, "r")
 	lignes = fichier.readlines()
 	fichier.close()
-	print nomFichier
 	auteurLigne = "Aucun Auteur"
 	for i in range(0,len(lignes)):
 		if finTitre.lower() in lignes[i].lower():
