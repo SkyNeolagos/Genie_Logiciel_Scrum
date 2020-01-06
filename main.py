@@ -5,7 +5,7 @@ def affichageListPdf(listFilesPdf):
     os.system('clear')
     longueur = len(listFilesPdf)
     for i in range(0,longueur):
-        print i,":",listFilesPdf[i]
+        print (i,":",listFilesPdf[i])
 
 def menuListPdf():
     os.system('clear')

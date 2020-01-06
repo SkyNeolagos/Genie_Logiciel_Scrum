@@ -10,39 +10,59 @@ def getAbstract(mon_fichier):
 	mon_fichier.close()
 
 	contenu=""
-	if "ABSTRACT" in textComplet :
-		tmp,contenu=textComplet.split("ABSTRACT",1)
-	elif "Abstract" in textComplet :
-		tmp,contenu=textComplet.split("Abstract",1)
 
-	if "INTRODUCTION" in contenu:
-		contenu,tmp=contenu.split("INTRODUCTION",1)
-	elif "Introduction" in contenu :
-		contenu,tmp=contenu.split("Introduction",1)
+	if "INTRODUCTION" in textComplet:
+		contenu,tmp=textComplet.split("INTRODUCTION",1)
+	elif "Introduction" in textComplet :
+		contenu,tmp=textComplet.split("Introduction",1)
+	elif "I NTRODUCTION" in textComplet:
+		contenu,tmp=textComplet.split("I NTRODUCTION",1)
+
+
+	x=len(contenu)-1
+	while contenu[x]!="1" and contenu[x]!="I":
+		x=x-1
+		if x==0:
+			break
+	contenu=contenu[:x]
+	contenu=contenu.strip()
+
+
+
+	if "ABSTRACT" in contenu :
+		tmp,contenu=contenu.split("ABSTRACT",1)
+	elif "Abstract" in contenu :
+		tmp,contenu=contenu.split("Abstract",1)
+	elif "A BSTRACT" in contenu :
+		tmp,contenu=textComplet.split("A BSTRACT",1)
+	else:
+		contenu.strip()
+		if "\n\n" in contenu:
+			tmp,contenu=contenu.rsplit("\n\n",1)
+
+	if contenu[0]==".":
+		contenu=contenu[1:]
+
 
 	if contenu=="":
 		return "Abstract introuvable"
 
-	contenu=contenu.rsplit('1',1)[0]
+	contenu=contenu.strip()
 
-	while contenu[0].isalpha()==False:
-		contenu=contenu[1:]
 
-	while contenu[len(contenu)-1]!="\n":
-		contenu=contenu[:len(contenu)-2]
-	
-	ff=contenu.find("")
-	if ff>0:
-		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
+	while "" in contenu:
+		ff=contenu.find("")
+		if ff>0:
+			tmp3=contenu[ff:contenu.find('\n',ff)].strip()
 
-		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
-			tmp1,tmp2=contenu.split("",1)
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			contenu=tmp1.strip()+"\n"+tmp2
-		else:
-			tmp1,tmp2=contenu.split("",1)
-			contenu=tmp1.strip()+"\n"+tmp2.strip()
+			if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
+				tmp1,tmp2=contenu.split("",1)
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				contenu=tmp1.strip()+"\n"+tmp2
+			else:
+				tmp1,tmp2=contenu.split("",1)
+				contenu=tmp1.strip()+"\n"+tmp2.strip()
 
 	contenu=contenu.strip()
 	contenu=contenu.replace("\n"," ")

@@ -16,6 +16,8 @@ def getIntro(mon_fichier):
 		tmp,contenu=textComplet.split("INTRODUCTION",1)
 	elif "Introduction" in textComplet :
 		tmp,contenu=textComplet.split("Introduction",1)
+	elif "I NTRODUCTION" in textComplet :
+		tmp,contenu=textComplet.split("I NTRODUCTION",1)
 	
 	if tmp=="":
 		return "Introduction introuvable"
@@ -44,26 +46,28 @@ def getIntro(mon_fichier):
 			else:
 				contenuBis=contenuBis[test+2:]
 				tmpTest+=test+2			
-	else:
+	elif "\n2\n" in textComplet:
 		contenu,tmp=contenu.split("\n2\n",1)
+	else:
+		return "Introduction introuvable"
 
-	ff=contenu.find("")
-	if ff>0:
-		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
+	while "" in contenu:
+		ff=contenu.find("")
+		if ff>0:
+			tmp3=contenu[ff:contenu.find('\n',ff)].strip()
 
-		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
-			tmp1,tmp2=contenu.split("",1)
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			contenu=tmp1.strip()+"\n"+tmp2
-		else:
-			tmp1,tmp2=contenu.split("",1)
-			contenu=tmp1.strip()+"\n"+tmp2.strip()
+			if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
+				tmp1,tmp2=contenu.split("",1)
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				contenu=tmp1.strip()+"\n"+tmp2
+			else:
+				tmp1,tmp2=contenu.split("",1)
+				contenu=tmp1.strip()+"\n"+tmp2.strip()
 
 	if contenu=="":
 		return "Introduction introuvable"
 
 
 	contenu=contenu.strip()
-
 	return contenu
