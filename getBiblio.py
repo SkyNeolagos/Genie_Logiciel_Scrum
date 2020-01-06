@@ -13,22 +13,25 @@ def getBiblio(mon_fichier):
 		tmp,contenu = textComplet.rsplit("REFERENCES\n",1)
 	elif "References" in textComplet :
 		tmp,contenu = textComplet.rsplit("References\n",1)
+	elif "R EFERENCES" in textComplet :
+		tmp,contenu = textComplet.rsplit("R EFERENCES\n",1)
 
 	if contenu=="":
 		return "References introuvables"
 	
-	ff=contenu.find("")
-	if ff>0:
-		tmp3=contenu[ff:contenu.find('\n',ff)].strip()
+	while "" in contenu:
+		ff=contenu.find("")
+		if ff>0:
+			tmp3=contenu[ff:contenu.find('\n',ff)].strip()
 
-		if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
-			tmp1,tmp2=contenu.split("",1)
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			tmp2=tmp2[tmp2.find('\n'):].strip()
-			contenu=tmp1.strip()+"\n"+tmp2
-		else:
-			tmp1,tmp2=contenu.split("",1)
-			contenu=tmp1.strip()+"\n"+tmp2.strip()
+			if isNum(tmp3) or (tmp3!="" and textComplet.count(tmp3)>3):
+				tmp1,tmp2=contenu.split("",1)
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				tmp2=tmp2[tmp2.find('\n'):].strip()
+				contenu=tmp1.strip()+"\n"+tmp2
+			else:
+				tmp1,tmp2=contenu.split("",1)
+				contenu=tmp1.strip()+"\n"+tmp2.strip()
 
 	contenu=contenu.strip()
 	return contenu
