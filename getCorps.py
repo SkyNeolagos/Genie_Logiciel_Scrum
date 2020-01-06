@@ -1,4 +1,4 @@
-from getIntroduction import *
+from getIntro import *
 
 def getCorp(mon_fichier):
 	mon_fichier = open(mon_fichier, "r")
