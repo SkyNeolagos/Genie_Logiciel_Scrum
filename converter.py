@@ -23,7 +23,7 @@ def convertToTxt():
 				pos="Papers/"+pos
 				replace=pos.replace(' ','_')
 				os.rename(pos,replace)
-				consoleCommand='pdftotext '+replace+' '+'convertDossier/'+name+'.txt'
+				consoleCommand='pdftotext -raw '+replace+' '+'convertDossier/'+name+'.txt'
 				os.system(consoleCommand)
 		return "resume"
 	else:
